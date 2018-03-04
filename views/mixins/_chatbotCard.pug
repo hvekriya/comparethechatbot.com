@@ -1,0 +1,25 @@
+mixin chatbotCard(chatbot = {})
+  .chatbot
+    .chatbot__hero
+      .chatbot__actions
+        if user
+          .chatbot__action.chatbot__action--heart
+            form.heart(method="POST" action=`/api/chatbots/${chatbot._id}/heart`)
+              - const heartStrings = user.hearts.map(obj => obj.toString())
+              - const heartClass = heartStrings.includes(chatbot._id.toString()) ? 'heart__button--hearted' : ''
+              button.heart__button(type="submit" name="heart" class=heartClass)
+                != h.icon('heart')
+        if user && chatbot.author.equals(user._id)
+          .chatbot__action.chatbot__action--edit
+            a(href=`/chatbots/${chatbot._id}/edit`)
+              != h.icon('pencil')
+        if chatbot.reviews
+          .chatbot__action.chatbot__action--count
+            a(href=`/chatbot/${chatbot.slug}`)
+              != h.icon('review')
+            span= chatbot.reviews.length
+      img(src=`/uploads/${chatbot.photo || 'bot.png'}`)
+      h2.title
+        a(href=`/chatbot/${chatbot.slug}`) #{chatbot.name}
+    .chatbot__details
+      p= chatbot.description.split(' ').slice(0, 25).join(' ')

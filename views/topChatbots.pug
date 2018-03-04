@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .container
+    h2 Top #{chatbots.length} chatbots
+    table.table
+      thead
+        td Photo
+        td Ranking
+        td Name
+        td Reviews
+        td Average ratig
+      each chatbot, i in chatbots
+        tr
+          td 
+            a(href=`/chatbot/${chatbot.slug}`)
+              img(width=200 src=`/uploads/${chatbot.photo}` || 'chatbot.png' alt=chatbot.name)
+          td #{i + 1}
+          td: a(href=`/chatbot/${chatbot.slug}`)= chatbot.name
+          td= chatbot.reviews.length
+          td #{Math.round(chatbot.averageRating * 10) / 10} / 5

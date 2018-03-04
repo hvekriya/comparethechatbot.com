@@ -1,0 +1,31 @@
+extends layout
+
+include mixins/_reviewForm
+include mixins/_review
+
+block content
+  .single
+    .single__hero
+      img.single__image(src=`/uploads/${chatbot.photo || 'bot.png'}`)
+      h2.title.title--single
+        a(href=`/chatbot/${chatbot.slug}`) #{chatbot.name}
+
+  .single__details.inner
+    h4 Company: #{chatbot.company}
+    p Description: #{chatbot.description}
+
+    if chatbot.tags
+      ul.tags
+        each tag in chatbot.tags
+          li.tag
+            a.tag__link(href=`/tags/${tag}`)
+              span.tag__text  ##{tag}
+
+    if user
+      +reviewForm(chatbot)
+
+    if chatbot.reviews
+      .reviews
+        each review in chatbot.reviews
+          .review
+            +review(review)

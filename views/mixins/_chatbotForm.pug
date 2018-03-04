@@ -1,0 +1,25 @@
+mixin chatbotForm(chatbot = {})
+  form(action=`/add/${chatbot._id || ''}` method="POST" class="card" enctype="multipart/form-data")
+    //- pre= h.dump(chatbot)
+    label(for="name") Name
+    input(type="text" name="name" value=chatbot.name)
+    label(for="api") Chatbot API (if any)
+    input(type="text" name="api" value=chatbot.api)
+    label(for="company") Company
+    input(type="text" name="company" value=chatbot.company)
+    label(for="description") Description
+    textarea(name="description")= chatbot.description
+    //- Image Upload
+    label(for="photo") Logo
+      input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
+      if chatbot.photo
+        img(src=`/uploads/${chatbot.photo}`, alt=chatbot.name width=200)
+
+    - const choices = ['AI', 'Personal', 'Social', 'Education', 'Health', 'Beauty', 'Gambling', 'Cooking', 'Fashion', 'Finance', 'Robotics', 'Travel', 'News', 'Leisure']
+    - const tags = chatbot.tags || []
+    ul.tags
+      each choice in choices
+        .tag.tag__choice
+          input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+          label(for=choice) #{choice}
+    input(type="submit" value="Save →" class="button")

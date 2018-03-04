@@ -1,0 +1,16 @@
+extends layout
+
+include mixins/_chatbotCard
+
+block content
+  .container
+    h2 #{tag || 'Tags'}
+    ul.tags
+      each t in tags
+        li.tag
+          a.tag__link(href=`/tags/${t._id}` class=(t._id === tag ? 'tag__link--active' : ''))
+            span.tag__text= t._id
+            span.tag__count= t.count
+    .chatbots
+      each chatbot in chatbots
+        +chatbotCard(chatbot)

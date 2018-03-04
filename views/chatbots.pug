@@ -1,0 +1,18 @@
+extends layout
+
+include mixins/_chatbotCard
+include mixins/_pagination
+
+block content
+  .container
+    h2= title
+    .chatbots
+      each chatbot in chatbots
+        +chatbotCard(chatbot)
+    +pagination(page, pages, count)
+    
+    if user
+    else
+      br   
+      small.text-muted Want to add your chatbot here? 
+        a(href="/register") Register for an account 

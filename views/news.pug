@@ -1,0 +1,18 @@
+extends layout
+
+include mixins/_newsCard
+
+block content  
+  .container
+    section#blog.section.blog
+      .container
+        header.section-heading
+          h2 Latest news
+            br 
+            small.text-muted News from chatbotsmagazine.com
+        #blogContent.section-content
+          #jsonContent.row
+        .text-center
+          a#loadBlogPosts.btn.btn-primary(href='//chatbotsmagazine.com')
+            | View All
+            span.fa.fa-angle-double-right
