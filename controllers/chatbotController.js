@@ -4,6 +4,7 @@ const User = mongoose.model('User')
 const multer = require('multer')
 const jimp = require('jimp')
 const uuid = require('uuid')
+const localStorage = require('../handlers/localStorage')
 
 const multerOptions = {
   storage: multer.memoryStorage(),
@@ -53,7 +54,7 @@ exports.createChatbot = async (req, res) => {
 
 exports.getChatbots = async (req, res) => {
   const page = req.params.page || 1
-  const limit = 4
+  const limit = 6
   const skip = (page * limit) - limit
   // 1. Query the database for a list of all chatbots
   const chatbotsPromise = Chatbot
@@ -156,4 +157,23 @@ exports.getHearts = async (req, res) => {
 exports.getTopChatbots = async (req, res) => {
   const chatbots = await Chatbot.getTopChatbots()
   res.render('topChatbots', {chatbots, title: 'Top Chatbots'})
+}
+
+exports.addToComparision = async (req, res) => {
+  const id = req.params.id
+  const chatbot = await Chatbot.findOne({_id: id})
+
+  const chatbotOne = localStorage.getFromLocalStorage('chatbotOne')
+  const chatbotTwo = localStorage.getFromLocalStorage('chatbotTwo')
+
+  console.log(chatbotOne)
+
+  if (chatbotOne === null) {
+    localStorage.saveToLocalStorage('chatbotOne', chatbot.name)
+  } else {
+    localStorage.saveToLocalStorage('chatbotTwo', chatbot.name)
+  }
+
+  req.flash('success', `Successfully added <strong>${chatbot.name}</strong>.`)
+  res.redirect(`/`)
 }

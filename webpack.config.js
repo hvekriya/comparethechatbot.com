@@ -47,7 +47,7 @@ const uglify = new webpack.optimize.UglifyJsPlugin({ // eslint-disable-line
 const config = {
   entry: {
     // we only have 1 entry, but I've set it up for multiple in the future
-    App: './public/javascripts/delicious-app.js'
+    App: './public/javascripts/chatbot-app.js'
   },
   // we're using sourcemaps and here is where we specify which kind of sourcemap to use
   devtool: 'source-map',
@@ -82,7 +82,7 @@ const config = {
     // ])
   ]
 }
-// webpack is cranky about some packages using a soon to be deprecated API. shhhhhhh
+
 process.noDeprecation = true
 
 module.exports = config

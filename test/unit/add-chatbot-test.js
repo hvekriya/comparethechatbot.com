@@ -9,7 +9,8 @@ const expect = chai.expect
 require('dotenv').config({ path: 'local-variables.env' })
 
 const Chatbot = require('../models/test-chabot-model')
-describe('Database chatbot add tests', function () {
+
+describe('Chabot database tests', function () {
   // Before starting the test, create a sandboxed database connection
   // Once a connection is established invoke done()
   before(function (done) {
@@ -24,7 +25,7 @@ describe('Database chatbot add tests', function () {
       console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`)
     })
   })
-  describe('Test add chatbot', function () {
+  describe('Test add a chatbot', function () {
     // Save object with 'name' value of 'Mike"
     it('New chatbot saved to test database', function (done) {
       var testAdd = Chatbot({

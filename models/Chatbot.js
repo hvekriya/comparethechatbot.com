@@ -12,6 +12,10 @@ const chatbotSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  framework: {
+    type: String,
+    trim: true
+  },
   company: {
     type: String,
     trim: true,

@@ -3,6 +3,8 @@ mixin chatbotForm(chatbot = {})
     //- pre= h.dump(chatbot)
     label(for="name") Name
     input(type="text" name="name" value=chatbot.name)
+    label(for="framework") Framework
+    input(type="text" name="framework" value=chatbot.framework)
     label(for="api") Chatbot API (if any)
     input(type="text" name="api" value=chatbot.api)
     label(for="company") Company

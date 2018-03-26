@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  .container      
+    div.col-sm-6
+      h1 #{chatbotOne || 'Chatbot One'}
+        div.frame
+          ul.chat.chat-one
+        div.spinner.spinner-one
+          div.bounce1
+          div.bounce2
+          div.bounce3
+
+    div.col-sm-6
+      h1 #{chatbotTwo || 'Chatbot Two'} 
+        div.frame
+          ul.chat.chat-two
+        div.spinner.spinner-two
+          div.bounce1
+          div.bounce2
+          div.bounce3
+    
+    div.col-sm-12     
+      div
+        div.input-chat
+          div.text.text-r
+            input.mytext(placeholder="Type a message")

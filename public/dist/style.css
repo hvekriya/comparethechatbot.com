@@ -726,7 +726,8 @@ label {
   .chatbot--wide {
     width: 100%; }
   .chatbot__details {
-    padding: 2rem; }
+    padding: 2rem;
+    height: 140px; }
     .chatbot__details p {
       line-height: 1.2;
       margin-bottom: 0; }
@@ -1147,7 +1148,8 @@ pre.error {
 
 .blog .blog-post .blog-content {
   padding: 15px 28px;
-  border: 1px solid #f5f5f5; }
+  border: 1px solid #f5f5f5;
+  height: 18em; }
 
 .blog .blog-post .blog-content h4 {
   margin: 20px 0;
@@ -1350,11 +1352,200 @@ pre.error {
 .blog-grid .blog-element img {
   width: 100%; }
 
+.news-img {
+  height: 240px; }
+
 footer {
   background: #303030;
   color: white;
   margin-top: 20px; }
   footer .footer {
     padding: 2%; }
+
+.mytext {
+  border: 0;
+  padding: 10px;
+  background-color: #303030;
+  color: white; }
+
+.text {
+  width: 80%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column; }
+
+.text > p:first-of-type {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: auto;
+  line-height: 13px;
+  font-size: 12px; }
+
+.text > p:last-of-type {
+  width: 100%;
+  text-align: right;
+  color: silver;
+  margin-bottom: -7px;
+  margin-top: auto; }
+
+.text-l {
+  float: left; }
+
+.text-r {
+  float: right;
+  padding-left: 10px; }
+
+.chatbot-avatar {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  width: 15%;
+  float: left;
+  padding-right: 10px; }
+
+.macro {
+  margin-top: 5px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  display: -ms-flexbox;
+  display: flex; }
+
+.msj-rta {
+  background: whitesmoke; }
+
+.msj {
+  float: left;
+  background: white; }
+
+.frame {
+  background: #e0e0de;
+  height: 450px;
+  overflow: hidden;
+  padding: 0; }
+
+.frame > div:last-of-type {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex; }
+
+body > div > div > div:nth-child(2) > span {
+  background: whitesmoke;
+  padding: 10px;
+  font-size: 21px;
+  border-radius: 50%; }
+
+body > div > div > div.msj-rta.macro {
+  margin: auto;
+  margin-left: 1%; }
+
+.frame ul {
+  width: 100%;
+  list-style-type: none;
+  padding: 18px;
+  position: absolute;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  top: 60px;
+  bottom: 47px;
+  overflow-y: scroll; }
+
+.msj:before {
+  width: 0;
+  height: 0;
+  content: "";
+  top: -5px;
+  left: -14px;
+  position: relative;
+  border-style: solid;
+  border-width: 0 13px 13px 0;
+  border-color: transparent #ffffff transparent transparent; }
+
+.msj-rta:after {
+  width: 0;
+  height: 0;
+  content: "";
+  top: -5px;
+  left: 14px;
+  position: relative;
+  border-style: solid;
+  border-width: 13px 13px 0 0;
+  border-color: whitesmoke transparent transparent transparent; }
+
+input:focus {
+  outline: none; }
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #d4d4d4; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #d4d4d4; }
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #d4d4d4; }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #d4d4d4; }
+
+.input-chat {
+  margin-top: 5px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #303030; }
+
+.chat1 {
+  background-color: #f7a6c9; }
+  .chat1:after {
+    border-color: #f7a6c9 transparent transparent transparent; }
+
+.chat2 {
+  background-color: #a6f7d5; }
+  .chat2:after {
+    border-color: #a6f7d5 transparent transparent transparent; }
+
+/*Huge thanks to @tobiasahlin at http://tobiasahlin.com/spinkit/ */
+.spinner {
+  text-align: right;
+  margin-right: 15px; }
+
+.spinner > div {
+  width: 10px;
+  height: 10px;
+  background-color: #333;
+  border-radius: 100%;
+  display: inline-block;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both; }
+
+.spinner .bounce1 {
+  animation-delay: -0.32s; }
+
+.spinner .bounce2 {
+  animation-delay: -0.16s; }
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0); }
+  40% {
+    transform: scale(1); } }
+
+.btn-primary {
+  width: 100%;
+  background-color: #303030;
+  border: none; }
 
 /*# sourceMappingURL=style.css.map*/
