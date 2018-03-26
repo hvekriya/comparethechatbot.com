@@ -4,3 +4,4 @@ node_modules/
 .env
 *.log
 local-variables.env
+variables.env
