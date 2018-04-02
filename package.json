@@ -11,7 +11,7 @@
     "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
     "assets": "webpack -w --display-max-modules 0",
     "now": "now -e DB_USER=@db_user -e DB_PASS=@db_pass -e NODE_ENV=\"production\" -e PORT=80",
-    "test": "_mocha --recursive --exit test/unit/"
+    "test": "_mocha --recursive --exit test/integration/"
   },
   "browserslist": "last 2 versions",
   "dependencies": {
@@ -42,7 +42,7 @@
     "juice": "4.0.2",
     "localStorage": "^1.0.3",
     "md5": "2.2.1",
-    "mocha": "^5.0.1",
+    "mocha": "^5.0.5",
     "moment": "^2.19.3",
     "mongoose": "4.8.7",
     "mongoose-mongodb-errors": "0.0.2",
@@ -56,6 +56,7 @@
     "pug": "2.0.0-beta6",
     "request": "^2.85.0",
     "request-promise": "^4.1.1",
+    "selenium-webdriver": "^4.0.0-alpha.1",
     "sinon": "^1.17.6",
     "sinon-as-promised": "^4.0.2",
     "slugs": "0.1.3",

@@ -4,21 +4,11 @@ const nodemailer = require('nodemailer')
 // const htmlToText = require('html-to-text')
 const promisify = require('es6-promisify')
 
-// let transport = nodemailer.createTransport({
-//   host: process.env.MAIL_HOST,
-//   port: process.env.MAIL_PORT,
-//   auth: {
-//     user: process.env.MAIL_USER,
-//     pass: process.env.MAIL_PASS
-//   }
-// })
-
-const transport = nodemailer.createTransport({
-  host: 'smtp.mailtrap.io',
-  port: 2525,
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
   auth: {
-    user: 'ee314f54c96c55',
-    pass: '4ff6a59af23163'
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS
   }
 })
 
@@ -26,9 +16,9 @@ exports.send = async (options) => {
   const mailOptions = {
     from: `Haresh Vekriya <noreply@haresh.com>`,
     to: options.user.email,
-    html: 'This will be filled in later',
+    html: '<a href="' + options.resetURL + '">Reset URL</a>',
     text: 'This will also be filled in later'
   }
-  const sendMail = promisify(transport.sendMail, transport)
+  const sendMail = promisify(transporter.sendMail, transporter)
   return sendMail(mailOptions)
 }
