@@ -701,8 +701,9 @@ label {
 .table {
   width: 100%; }
   .table td {
-    padding: 5px; }
-  .table tr:nth-child(even) {
+    padding: 5px;
+    vertical-align: middle !important; }
+  .table tr {
     background: white; }
   .table tr:nth-child(odd):not(:first-child) {
     background: #f7f7f7; }

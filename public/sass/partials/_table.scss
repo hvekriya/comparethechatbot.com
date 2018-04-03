@@ -2,8 +2,9 @@
   width: 100%;
   td {
     padding: 5px;
+    vertical-align:middle !important;
   }
-  tr:nth-child(even) {
+  tr {
     background: white;
   }
   tr:nth-child(odd):not(:first-child) {

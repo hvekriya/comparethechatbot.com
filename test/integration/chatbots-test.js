@@ -1,23 +1,21 @@
 /* eslint-env mocha */
 
-var webdriver = require('selenium-webdriver'),
-  // { describe, it, after, before } = require('selenium-webdriver/testing'),
-  By = webdriver.By,
-  until = webdriver.until
-var driver
-var test = require('selenium-webdriver/testing')
+const {Builder, By, Key, until} = require('selenium-webdriver')
 
-test.describe('Comparethechatbot app scenarios', function () {
+var driver
+
+describe('Comparethechatbot app scenarios', function () {
   this.timeout(50000)
-  test.beforeEach(function () {
-    driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build()
+
+  beforeEach(function () {
+    driver = new Builder().forBrowser('chrome').build()
     driver.get('http://library-app.firebaseapp.com')
   })
-  test.afterEach(function () {
+  afterEach(function () {
     driver.quit()
   })
 
-  test.it('Changes Button opacity upon email being filled out', function () {
+  it('Changes Button opacity upon email being filled out', function () {
     var submitBtn = driver.findElement(By.css('.btn-lg'))
     driver.findElement(By.css('input').sendKeys('us@fakemail.com'))
     driver.wait(function () {
@@ -26,7 +24,7 @@ test.describe('Comparethechatbot app scenarios', function () {
       })
     }, 5000)
   })
-  test.it('Click the submit button', function () {
+  it('Click the submit button', function () {
     var submitBtn = driver.findElement(By.css('.btn-lg'))
     driver.findElement(By.css('input').sendKeys('us@fakemail.com'))
     submitBtn.click()
@@ -34,7 +32,7 @@ test.describe('Comparethechatbot app scenarios', function () {
       console.log('Alert success text is:' + text)
     })
   })
-  test.it('Check the nav bar items', function () {
+  it('Check the nav bar items', function () {
     driver.findElement(By.css('nav')).getText().then(function (text) {
       console.log(text)
     })
