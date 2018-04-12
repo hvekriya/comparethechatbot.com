@@ -119,19 +119,19 @@ exports.getChatbotsByTag = async (req, res) => {
 exports.searchChatbots = async (req, res) => {
   const chatbots = await Chatbot
   // first find chatbots that match
-  .find({
-    $text: {
-      $search: req.query.q
-    }
-  }, {
-    score: { $meta: 'textScore' }
-  })
-  // the sort them
-  .sort({
-    score: { $meta: 'textScore' }
-  })
-  // limit to only 5 results
-  .limit(5)
+    .find({
+      $text: {
+        $search: req.query.q
+      }
+    }, {
+      score: { $meta: 'textScore' }
+    })
+    // the sort them
+    .sort({
+      score: { $meta: 'textScore' }
+    })
+    // limit to only 5 results
+    .limit(5)
   res.json(chatbots)
 }
 

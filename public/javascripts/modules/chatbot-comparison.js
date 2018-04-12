@@ -24,6 +24,12 @@ function send () {
 
 // instead of creating the main post requests we are going to handle them in the back. Post to end points require special keys and these should be kept safe so
 // we can grab these and keep them in the back only. We will send request to back end which will send request to end point and return it
+var host
+if (window.location.hostname === 'localhost') {
+  host = `http://${window.location.hostname}:7777`
+} else {
+  host = `https://${window.location.hostname}`
+}
 
 function chatbotOne () {
   var text = $('.mytext').val()
@@ -31,7 +37,7 @@ function chatbotOne () {
   insertChatOne('me', text)
   axios({
     method: 'get',
-    url: `http://localhost:7777/api/chatbotOne?query=${text}`,
+    url: `${host}/api/chatbotOne?query=${text}`,
     headers: {
       'Content-Type': 'application/json'
     }
@@ -55,7 +61,7 @@ function chatbotTwo () {
   insertChatTwo('me', text)
   return axios({
     method: 'get',
-    url: `http://localhost:7777/api/chatbotTwo?query=${text}`
+    url: `${host}/api/chatbotTwo?query=${text}`
   })
     .then(res => {
     // lets hide the loading animation

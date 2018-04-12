@@ -5,6 +5,7 @@ import typeAhead from './modules/typeAhead'
 import ajaxHeart from './modules/heart'
 import './modules/articles'
 import './modules/chatbot-comparison.js'
+import './modules/flash.js'
 
 typeAhead($('.search'))
 

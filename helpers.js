@@ -23,6 +23,6 @@ exports.menu = [
   { slug: '/top', title: 'Top' },
   { slug: '/news', title: 'News' },
   { slug: '/faq', title: 'FAQ' },
-  { slug: '/add', title: 'Add' },
-  { slug: '/compare', title: 'Compare' }
+  { slug: '/compare', title: 'Compare' },
+  { slug: '/add', title: 'Add' }
 ]

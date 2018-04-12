@@ -3,6 +3,7 @@ html(lang="en")
   head
     title= `${title} | ${h.siteName}`
     link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+    link(rel="stylesheet",href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css")
     link(rel='stylesheet', href='/dist/style.css')
     link(rel="shortcut icon" type="image/png" href="/images/icons/bot.png")
     meta(name="viewport" content="width=device-width, initial-scale=1")
@@ -38,6 +39,13 @@ html(lang="en")
               li.nav__item: a.nav__link(href="/login", class=(currentPath.startsWith('/login') ? 'nav__link--active' : '')) Log In
 
     block messages
+      .container.animated.fadeInDown.feedback-message
+        div.alert.alert-warning.alert-dismissible.show(role="alert")
+          strong
+            a(href="https://goo.gl/forms/4ULPk0DGdgSt8nlG2") This is new website.  Care to leave review?
+          button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+            span &times;
+
       if locals.flashes
         .inner.inner--flashes
           .flash-messages
