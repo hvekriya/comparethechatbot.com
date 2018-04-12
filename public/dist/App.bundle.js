@@ -27644,6 +27644,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   }
 });
 
+(0, _jquery2.default)('#send').on('click', function () {
+  send();
+});
+
 function send() {
   // multiple concurrent requests to two chatbots
   _axios2.default.all([chatbotOne(), chatbotTwo()]).then(_axios2.default.spread(function (botOneResponse, botTwoResonse) {}));

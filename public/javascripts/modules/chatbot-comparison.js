@@ -11,11 +11,15 @@ $('.mytext').on('keydown', function (e) {
   }
 })
 
+$('#send').on('click', function () {
+  send()
+})
+
 function send () {
   // multiple concurrent requests to two chatbots
   axios.all([chatbotOne(), chatbotTwo()])
-  .then(axios.spread(function (botOneResponse, botTwoResonse) {
-  }))
+    .then(axios.spread(function (botOneResponse, botTwoResonse) {
+    }))
 }
 
 // instead of creating the main post requests we are going to handle them in the back. Post to end points require special keys and these should be kept safe so
@@ -32,17 +36,17 @@ function chatbotOne () {
       'Content-Type': 'application/json'
     }
   })
-  .then(res => {
+    .then(res => {
     // lets hide the loading animation
-    $('.spinner-one').hide()
-    var data = res.data.result.speech
-    // empty the input ready for next input
-    $('.mytext').val('')
-    insertChatOne('', data)
-  })
-  .catch(function (error) {
-    console.log(error)
-  })
+      $('.spinner-one').hide()
+      var data = res.data.result.speech
+      // empty the input ready for next input
+      $('.mytext').val('')
+      insertChatOne('', data)
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
 }
 
 function chatbotTwo () {
@@ -53,15 +57,15 @@ function chatbotTwo () {
     method: 'get',
     url: `http://localhost:7777/api/chatbotTwo?query=${text}`
   })
-  .then(res => {
+    .then(res => {
     // lets hide the loading animation
-    $('.spinner-two').hide()
-    var data = res.data
-    insertChatTwo('', data)
-  })
-  .catch(function (error) {
-    console.log(error)
-  })
+      $('.spinner-two').hide()
+      var data = res.data
+      insertChatTwo('', data)
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
 }
 
 // show the loading spinners on text input
@@ -115,9 +119,9 @@ function insertChatOne (who, text, time) {
                   '</li>'
   }
   setTimeout(
-        function () {
-          $('ul.chat-one').append(control).scrollTop($('ul.chat-one').prop('scrollHeight'))
-        }, time)
+    function () {
+      $('ul.chat-one').append(control).scrollTop($('ul.chat-one').prop('scrollHeight'))
+    }, time)
 }
 
 function insertChatTwo (who, text, time) {
@@ -151,7 +155,7 @@ function insertChatTwo (who, text, time) {
                   '</li>'
   }
   setTimeout(
-        function () {
-          $('ul.chat-two').append(control).scrollTop($('ul.chat-two').prop('scrollHeight'))
-        }, time)
+    function () {
+      $('ul.chat-two').append(control).scrollTop($('ul.chat-two').prop('scrollHeight'))
+    }, time)
 }
