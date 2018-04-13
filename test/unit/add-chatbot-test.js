@@ -10,11 +10,11 @@ require('dotenv').config({ path: 'local-variables.env' })
 
 const Chatbot = require('../models/test-chabot-model')
 
-describe('Chabot database tests', function () {
+describe('Add chatbot tests', function () {
   // Before starting the test, create a sandboxed database connection
   // Once a connection is established invoke done()
   before(function (done) {
-// Connect to our Database and handle an bad connections
+    // Connect to our Database and handle an bad connections
     mongoose.connect(process.env.DATABASE)
     mongoose.Promise = global.Promise // Tell Mongoose to use ES6 promises
     mongoose.connection.on('open', () => {
