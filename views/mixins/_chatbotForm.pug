@@ -15,7 +15,7 @@ mixin chatbotForm(chatbot = {})
     label(for="photo") Logo
       input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
       if chatbot.photo
-        img(src=`/uploads/${chatbot.photo}`, alt=chatbot.name width=200)
+        img(src=`${chatbot.photo}`, alt=chatbot.name width=200)
 
     - const choices = ['AI', 'Personal', 'Social', 'Education', 'Health', 'Beauty', 'Gambling', 'Cooking', 'Fashion', 'Finance', 'Robotics', 'Travel', 'News', 'Leisure']
     - const tags = chatbot.tags || []

@@ -6,7 +6,7 @@ include mixins/_review
 block content
   .single
     .single__hero
-      img.single__image(src=`/uploads/${chatbot.photo || 'bot.png'}`)
+      img.single__image(src=`${chatbot.photo || 'bot.png'}`)
       h2.title.title--single
         a(href=`/chatbot/${chatbot.slug}`) #{chatbot.name}
 

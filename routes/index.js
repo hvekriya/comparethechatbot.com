@@ -15,12 +15,14 @@ router.get('/add', authController.isLoggedIn, chatbotController.addChatbot)
 router.post('/add',
   chatbotController.upload,
   catchErrors(chatbotController.resize),
+  catchErrors(chatbotController.uploadPhoto),
   catchErrors(chatbotController.createChatbot)
 )
 
 router.post('/add/:id',
   chatbotController.upload,
   catchErrors(chatbotController.resize),
+  catchErrors(chatbotController.uploadPhoto),
   catchErrors(chatbotController.updateChatbot)
 )
 
