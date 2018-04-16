@@ -175,5 +175,5 @@ exports.addToComparision = async (req, res) => {
   }
 
   req.flash('success', `Successfully added <strong>${chatbot.name}</strong>.`)
-  res.redirect(`/`)
+  res.redirect(`/chatbots`)
 }
