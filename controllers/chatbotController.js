@@ -10,7 +10,7 @@ const Datauri = require("datauri")
 const path = require("path")
 const fs = require("fs")
 
-require('dotenv').config({ path: 'local-variables.env' })
+require("dotenv").config({ path: "local-variables.env" })
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -60,25 +60,29 @@ exports.resize = async (req, res, next) => {
 exports.uploadPhoto = async (req, res, next) => {
   var dUri = new Datauri()
   //cloudinary requires the image to be stored in a temporary folder. We will delete it once uploaded
-  dUri.format(
-    path.extname(`./public/uploads/${req.body.photo}`).toString(),
-    req.file.buffer
-  )
+  if (req.body.photo) {
+    dUri.format(
+      path.extname(`./public/uploads/${req.body.photo}`).toString(),
+      req.file.buffer
+    )
 
-  await cloudinary.v2.uploader.upload(dUri.content, function(err, result) {
-    if (err) {
-      console.log(err)
-    } else {
-      // lets delete the image now as it is uploaded succesfully.
-      fs.unlink(`./public/uploads/${req.body.photo}`, err => {
-        if (err) throw err
-        console.log(`${req.body.photo} was deleted`)
-      })
-      // lets store the new image name into the variable and it will be stored in the database
-      req.body.photo = result.secure_url
-      next()
-    }
-  })
+    await cloudinary.v2.uploader.upload(dUri.content, function(err, result) {
+      if (err) {
+        console.log(err)
+      } else {
+        // lets delete the image now as it is uploaded succesfully.
+        fs.unlink(`./public/uploads/${req.body.photo}`, err => {
+          if (err) throw err
+          console.log(`${req.body.photo} was deleted`)
+        })
+        // lets store the new image name into the variable and it will be stored in the database
+        req.body.photo = result.secure_url
+        next()
+      }
+    })
+  } else {
+    next()
+  }
 }
 
 exports.createChatbot = async (req, res) => {
