@@ -14,7 +14,7 @@ block content
         tr
           td 
             a(href=`/chatbot/${chatbot.slug}`)
-              img(width=200 src=`/uploads/${chatbot.photo}` || 'chatbot.png' alt=chatbot.name)
+              img(width=200 src=`${chatbot.photo}` || 'chatbot.png' alt=chatbot.name)
           td #{i + 1}
           td: a(href=`/chatbot/${chatbot.slug}`)= chatbot.name
           td= chatbot.reviews.length
