@@ -4,7 +4,7 @@ const chatbotController = require('../controllers/chatbotController')
 const userController = require('../controllers/userController')
 const authController = require('../controllers/authController')
 const reviewController = require('../controllers/reviewController')
-const chatController = require('../controllers/chatController')
+const compareController = require('../controllers/compareController')
 const { catchErrors } = require('../handlers/errorHandlers')
 
 router.get('/', catchErrors(chatbotController.getChatbots))
@@ -71,7 +71,7 @@ router.get('/news', (req, res) => {
 })
 
 // chatbots compare
-router.get('/compare', chatController.getChatBots)
+router.get('/compare', compareController.getChatBots)
 router.get('/compare/:id', chatbotController.addToComparision)
 
 /*
@@ -83,7 +83,7 @@ router.post('/api/chatbots/:id/heart', catchErrors(chatbotController.heartChatbo
 
 // handle the chatbot test requests
 
-router.get('/api/chatbotOne', catchErrors(chatController.chatbotOne))
-router.get('/api/chatbotTwo', catchErrors(chatController.chatbotTwo))
+router.get('/api/chatbotOne', catchErrors(compareController.chatbotOne))
+router.get('/api/chatbotTwo', catchErrors(compareController.chatbotTwo))
 
 module.exports = router

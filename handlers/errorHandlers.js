@@ -71,3 +71,10 @@ exports.productionErrors = (err, req, res, next) => {
     error: {}
   })
 }
+
+exports.RegisterErrors = (err) => {
+  if (err === "UserExistsError") {
+    err = "The user already exists."
+  }
+  return err
+}
