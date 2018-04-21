@@ -10,9 +10,15 @@ html(lang="en")
   body
     block header
       header.top
-        nav.nav
-          .nav__section.nav__section--pages
-            li.nav__item
+        nav.nav.navbar-default.navbar
+          .navbar-header
+            button.navbar-toggle.collapsed(type='button' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' aria-expanded='false')
+              span.sr-only Toggle navigation
+              span.icon-bar.top-bar
+              span.icon-bar.middle-bar
+              span.icon-bar.bottom-bar
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse.nav__section.nav__section--pages
+            li.nav__item.li-logo
               a.nav__link.nav__link--logo(href="/")
                 != h.icon('logo')
             each item in h.menu
@@ -42,7 +48,7 @@ html(lang="en")
       .container.animated.fadeInDown.feedback-message
         div.alert.alert-warning.alert-dismissible.show(role="alert")
           strong
-            a(href="https://goo.gl/forms/4ULPk0DGdgSt8nlG2") This is new website.  Care to leave review?
+            a(href="https://goo.gl/forms/4ULPk0DGdgSt8nlG2") This is new website.  Click here to leave review?
           button(type="button" class="close" data-dismiss="alert" aria-label="Close")
             span &times;
 
@@ -61,7 +67,7 @@ html(lang="en")
 footer
   .container-fluid
     .footer
-      center Comparethechatbot.com © 2018    
+      center Comparethechatbot.com © 2018 || 101 New Cavendish St, Fitzrovia, London W1W 6XH || Email: <a href="mailto:w1497109@my.westminster.ac.uk?" target="_top" style="color:white;">w1497109@my.westminster.ac.uk</a>
 
     block scripts
       script(src="https://code.jquery.com/jquery-2.2.4.js", integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=", crossorigin="anonymous")

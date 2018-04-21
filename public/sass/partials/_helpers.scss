@@ -3,20 +3,6 @@
   font-size: 0;
 }
 
-.button {
-  border: 0;
-  background: $yellow;
-  color: $black;
-  font-family: 'Panama';
-  font-weight: 600;
-}
-
-form {
-  .button {
-    margin-top: 30px;
-  }
-}
-
 .avatar {
  min-width: 50px;
  height: 50px;
@@ -35,8 +21,4 @@ pre.error {
   background: white;
   line-height: 3;
   white-space: pre-line;
-}
-
-.btn {
-  padding: 10px 50px;
 }

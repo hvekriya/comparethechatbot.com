@@ -1,5 +1,24 @@
 .btn-primary {
   width: 100%;
-  background-color: $black;
+  background-color: $yellow;
   border: none;
+}
+
+.button, .btn-primary {
+  border: 0;
+  background: $yellow;
+  color: $black;
+  font-family: 'Panama';
+  font-weight: 600;
+}
+
+form {
+  .button {
+    margin-top: 30px;
+  }
+}
+
+.btn, .btn-primary  {
+  padding: 10px 50px;
+  border-radius: 0%;
 }

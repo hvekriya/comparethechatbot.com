@@ -24,4 +24,4 @@ mixin chatbotForm(chatbot = {})
         .tag.tag__choice
           input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
           label(for=choice) #{choice}
-    input(type="submit" value="Save →" class="button")
+    input.button.btn.btn-primary(type="submit" value="Save →")

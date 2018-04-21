@@ -8,7 +8,9 @@
   justify-content: space-between;
   background: $black;
   &__section {
-    display: flex;
+    @include respond-to(wide-screens) {
+      display: flex!important;
+    }
     &--search {
       flex: 1 1 auto;
     }
@@ -59,6 +61,11 @@
   }
 }
 
+.nav__section--user {
+  @include respond-to(handhelds) {
+    display: flex;
+  }
+}
 
 @media all and (max-width: 1200px) {
   .nav {
@@ -94,7 +101,7 @@
 @media all and (max-width: 650px) {
   .nav {
     &__section {
-      width: 100%;
+      width: 70%;
       &--user {
         order: -1;
         border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -127,4 +134,93 @@
     content: '♥️';
     margin-right: 1rem;
   }
+}
+
+.li-logo {
+  @include respond-to(handhelds) {
+    display: none;
+  }
+}
+
+.navbar {
+  border: none;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: white;
+}
+
+.navbar-collapse {
+  padding-right: 0px;
+  padding-left: 0px;
+  border: none;
+}
+
+.nav__section--pages {
+  @include respond-to(handhelds) {
+    width: 100% !important;
+  }
+  .nav__item {
+    @include respond-to(handhelds) {
+      width: 100% !important;
+    }
+  }
+}
+
+@include respond-to(wide-screens) {
+  .navbar-collapse.collapse {
+    display: flex!important;
+  }
+}
+
+.navbar-default .navbar-toggle {
+  border: none;
+  &:hover {
+      background: transparent !important;
+  }
+
+  .icon-bar {
+      width: 22px;
+      transition: all 0.2s;
+      background-color: red !important;
+  }
+
+  .top-bar {
+      transform: rotate(45deg);
+      transform-origin: 10% 10%;
+  }
+
+  .middle-bar {
+      opacity: 0;
+  }
+
+  .bottom-bar {
+      transform: rotate(-45deg);
+      transform-origin: 10% 90%;
+  }
+
+  &.collapsed {
+      .icon-bar {
+          background-color: white !important;
+      }
+
+      .top-bar {
+          transform: rotate(0);
+      }
+
+      .middle-bar {
+          opacity: 1;
+      }
+
+      .bottom-bar {
+          transform: rotate(0);
+      }
+  }
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+  background-color: transparent;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: white;
 }
