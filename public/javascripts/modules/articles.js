@@ -35,9 +35,9 @@ $(function () {
           if (title.length > titleChars) {
             var trimmedTitle = title.substr(0, titleChars)
             trimmedTitle = trimmedTitle.substr(0, Math.min(trimmedTitle.length, trimmedTitle.lastIndexOf(' ')))
-            output += '<div class="blog-content"><h4><a href="' + item.link + '">' + trimmedTitle + '...' + '</a></h4>'
+            output += '<div class="blog-content"><h4><a class="article-link" href="' + item.link + '">' + trimmedTitle + '...' + '</a></h4>'
           } else {
-            output += '<div class="blog-content"><h4><a href="' + item.link + '">' + item.title + '</a></h4>'
+            output += '<div class="blog-content"><h4><a class="article-link" href="' + item.link + '">' + item.title + '</a></h4>'
           }
 
           output += '<div class="post-meta"><span>By ' + item.author + '</span></div>'

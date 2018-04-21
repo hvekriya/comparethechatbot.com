@@ -226,8 +226,6 @@ exports.addToComparision = async (req, res) => {
   const chatbotOne = localStorage.getFromLocalStorage("chatbotOne")
   const chatbotTwo = localStorage.getFromLocalStorage("chatbotTwo")
 
-  console.log(chatbotOne)
-
   if (chatbotOne === null) {
     localStorage.saveToLocalStorage("chatbotOne", chatbot.name)
   } else {

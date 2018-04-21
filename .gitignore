@@ -5,4 +5,3 @@ node_modules/
 *.log
 local-variables.env
 variables.env
-public/uploads/
