@@ -1,3 +1,5 @@
+@import '_mixins';
+
 @font-face {
     font-family: 'panama';
     src: url('/fonts/panama-bold-webfont.woff2') format('woff2'),
@@ -76,4 +78,7 @@ p {
   margin-top: -9rem;
   font-size: 10rem;
   text-align: center;
+  @include respond-to(handhelds) {
+    font-size: 6rem;
+  }
 }

@@ -467,6 +467,7 @@ p {
   line-height: 1.1;
   -ms-transform: skew(0, -3deg);
       transform: skew(0, -3deg);
+  height: 90px;
   line-height: 1.1; }
   .title--long {
     font-size: 30px; }
@@ -490,6 +491,9 @@ p {
   margin-top: -9rem;
   font-size: 10rem;
   text-align: center; }
+  @media only screen and (max-width: 768px) {
+    .title--single {
+      font-size: 6rem; } }
 
 input, textarea {
   width: 100%;
