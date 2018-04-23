@@ -27634,17 +27634,17 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _jquery2.default)('.spinner-one').hide();
-(0, _jquery2.default)('.spinner-two').hide();
+(0, _jquery2.default)(".spinner-one").hide();
+(0, _jquery2.default)(".spinner-two").hide();
 
-(0, _jquery2.default)('.mytext').on('keydown', function (e) {
+(0, _jquery2.default)(".mytext").on("keydown", function (e) {
   if (e.which === 13) {
     e.preventDefault();
     send();
   }
 });
 
-(0, _jquery2.default)('#send').on('click', function () {
+(0, _jquery2.default)("#send").on("click", function () {
   send();
 });
 
@@ -27656,108 +27656,108 @@ function send() {
 // instead of creating the main post requests we are going to handle them in the back. Post to end points require special keys and these should be kept safe so
 // we can grab these and keep them in the back only. We will send request to back end which will send request to end point and return it
 var host;
-if (window.location.hostname === 'localhost') {
-  host = 'http://' + window.location.hostname + ':7777';
+if (window.location.hostname === "localhost") {
+  host = "http://" + window.location.hostname + ":7777";
 } else {
-  host = 'https://' + window.location.hostname;
+  host = "https://" + window.location.hostname;
 }
 
 function chatbotOne() {
-  var text = (0, _jquery2.default)('.mytext').val();
+  var text = (0, _jquery2.default)(".mytext").val();
   // Send a get request to back end
-  insertChatOne('me', text);
+  insertChatOne("me", text);
   (0, _axios2.default)({
-    method: 'get',
-    url: host + '/api/chatbotOne?query=' + text,
+    method: "get",
+    url: host + "/api/chatbotOne?query=" + text,
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json"
     }
   }).then(function (res) {
     // lets hide the loading animation
-    (0, _jquery2.default)('.spinner-one').hide();
+    (0, _jquery2.default)(".spinner-one").hide();
     var data = res.data.result.speech;
     // empty the input ready for next input
-    (0, _jquery2.default)('.mytext').val('');
-    insertChatOne('', data);
+    (0, _jquery2.default)(".mytext").val("");
+    insertChatOne("", data);
   }).catch(function (error) {
     console.log(error);
   });
 }
 
 function chatbotTwo() {
-  var text = (0, _jquery2.default)('.mytext').val();
+  var text = (0, _jquery2.default)(".mytext").val();
   // Send a get request to back end
-  insertChatTwo('me', text);
+  insertChatTwo("me", text);
   return (0, _axios2.default)({
-    method: 'get',
-    url: host + '/api/chatbotTwo?query=' + text
+    method: "get",
+    url: host + "/api/chatbotTwo?query=" + text
   }).then(function (res) {
     // lets hide the loading animation
-    (0, _jquery2.default)('.spinner-two').hide();
+    (0, _jquery2.default)(".spinner-two").hide();
     var data = res.data;
-    insertChatTwo('', data);
+    insertChatTwo("", data);
   }).catch(function (error) {
     console.log(error);
   });
 }
 
 // show the loading spinners on text input
-(0, _jquery2.default)('input.mytext').on('input', function (e) {
-  (0, _jquery2.default)('.spinner-one').show();
-  (0, _jquery2.default)('.spinner-two').show();
+(0, _jquery2.default)("input.mytext").on("input", function (e) {
+  (0, _jquery2.default)(".spinner-one").show();
+  (0, _jquery2.default)(".spinner-two").show();
 });
 
 function formatAMPM(date) {
   var hours = date.getHours();
   var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? 'PM' : 'AM';
+  var ampm = hours >= 12 ? "PM" : "AM";
   hours = hours % 12;
   hours = hours || 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0' + minutes : minutes;
-  var strTime = hours + ':' + minutes + ' ' + ampm;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  var strTime = hours + ":" + minutes + " " + ampm;
   return strTime;
 }
 
 var me = {};
-me.avatar = 'images/icons/you.png';
+me.avatar = "images/icons/you.png";
 
 function insertChatOne(who, text, time) {
   var you = {};
-  you.avatar = 'images/icons/chatbot-1.png';
+  you.avatar = "images/icons/chatbot-1.png";
 
   if (time === undefined) {
     time = 0;
   }
-  var control = '';
+  var control = "";
   var date = formatAMPM(new Date());
 
-  if (who === 'me') {
-    control = '<li style="width:70%">' + '<div class="msj macro">' + '<div class="avatar"><img class="img-circle" style="width:100%;" src="' + me.avatar + '" /></div>' + '<div class="text text-l">' + '<p>' + text + '</p>' + '<p><small>' + date + '</small></p>' + '</div>' + '</div>' + '</li>';
+  if (who === "me") {
+    control = '<li style="width:70%">' + '<div class="msj macro">' + '<div class="avatar"><img class="img-circle" style="width:100%;" src="' + me.avatar + '" /></div>' + '<div class="text text-l">' + "<p>" + text + "</p>" + "<p><small>" + date + "</small></p>" + "</div>" + "</div>" + "</li>";
   } else {
-    control = '<li style="width:70%;">' + '<div class="msj-rta macro chat1" style="margin-left: 130px;">' + '<div class="text text-r">' + '<p>' + text + '</p>' + '<p><small>' + date + '</small></p>' + '</div>' + '<div class="avatar" style="padding:0px 0px 0px 10px !important"><img class="img-circle" style="width:100%;" src="' + you.avatar + '" /></div>' + '</li>';
+    control = '<li style="width:70%;">' + '<div class="msj-rta macro chat1" style="margin-left: 130px;">' + '<div class="text text-r">' + "<p>" + text + "</p>" + "<p><small>" + date + "</small></p>" + "</div>" + '<div class="avatar" style="padding:0px 0px 0px 10px !important"><img class="img-circle" style="width:100%;" src="' + you.avatar + '" /></div>' + "</li>";
   }
   setTimeout(function () {
-    (0, _jquery2.default)('ul.chat-one').append(control).scrollTop((0, _jquery2.default)('ul.chat-one').prop('scrollHeight'));
+    (0, _jquery2.default)("ul.chat-one").append(control).scrollTop((0, _jquery2.default)("ul.chat-one").prop("scrollHeight"));
   }, time);
 }
 
 function insertChatTwo(who, text, time) {
   var you = {};
-  you.avatar = 'images/icons/chatbot-2.png';
+  you.avatar = "images/icons/chatbot-2.png";
 
   if (time === undefined) {
     time = 0;
   }
-  var control = '';
+  var control = "";
   var date = formatAMPM(new Date());
 
-  if (who === 'me') {
-    control = '<li style="width:70%">' + '<div class="msj macro">' + '<div class="avatar"><img class="img-circle" style="width:100%;" src="' + me.avatar + '" /></div>' + '<div class="text text-l">' + '<p>' + text + '</p>' + '<p><small>' + date + '</small></p>' + '</div>' + '</div>' + '</li>';
+  if (who === "me") {
+    control = '<li style="width:70%">' + '<div class="msj macro">' + '<div class="avatar"><img class="img-circle" style="width:100%;" src="' + me.avatar + '" /></div>' + '<div class="text text-l">' + "<p>" + text + "</p>" + "<p><small>" + date + "</small></p>" + "</div>" + "</div>" + "</li>";
   } else {
-    control = '<li style="width:70%;">' + '<div class="msj-rta macro chat2" style="margin-left: 130px;">' + '<div class="text text-r">' + '<p>' + text + '</p>' + '<p><small>' + date + '</small></p>' + '</div>' + '<div class="avatar" style="padding:0px 0px 0px 10px !important"><img class="img-circle" style="width:100%;" src="' + you.avatar + '" /></div>' + '</li>';
+    control = '<li style="width:70%;">' + '<div class="msj-rta macro chat2" style="margin-left: 130px;">' + '<div class="text text-r">' + "<p>" + text + "</p>" + "<p><small>" + date + "</small></p>" + "</div>" + '<div class="avatar" style="padding:0px 0px 0px 10px !important"><img class="img-circle" style="width:100%;" src="' + you.avatar + '" /></div>' + "</li>";
   }
   setTimeout(function () {
-    (0, _jquery2.default)('ul.chat-two').append(control).scrollTop((0, _jquery2.default)('ul.chat-two').prop('scrollHeight'));
+    (0, _jquery2.default)("ul.chat-two").append(control).scrollTop((0, _jquery2.default)("ul.chat-two").prop("scrollHeight"));
   }, time);
 }
 

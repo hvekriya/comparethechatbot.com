@@ -23,6 +23,8 @@ var chatbotOneUrl = 'https://api.api.ai/v1/query'
 exports.getChatBots = (req, res) => {
   const chatbotOne = localStorage.getFromLocalStorage('chatbotOne')
   const chatbotTwo = localStorage.getFromLocalStorage('chatbotTwo')
+  console.log("The chatbot one is " + chatbotOne)
+  console.log("The chatbot two is " + chatbotTwo)
 
   if (chatbotOne !== null || chatbotTwo !== null) {
     return res.render('compare', {title: 'Compare chatbots', chatbotOne: chatbotOne, chatbotTwo: chatbotTwo})

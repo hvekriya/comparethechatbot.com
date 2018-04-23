@@ -225,13 +225,35 @@ exports.addToComparision = async (req, res) => {
 
   const chatbotOne = localStorage.getFromLocalStorage("chatbotOne")
   const chatbotTwo = localStorage.getFromLocalStorage("chatbotTwo")
+  
+  var counter = +1
 
-  if (chatbotOne === null) {
-    localStorage.saveToLocalStorage("chatbotOne", chatbot.name)
-  } else {
-    localStorage.saveToLocalStorage("chatbotTwo", chatbot.name)
+  if (localStorage.getFromLocalStorage("counter")) {
+    counter = counter + parseInt(localStorage.getFromLocalStorage("counter"))
   }
 
-  req.flash("success", `Successfully added <strong>${chatbot.name}</strong>.`)
+  if (counter > 2) {
+    localStorage.clearStorage()
+    counter = 0
+    console.log("The counter is " + counter)
+    console.log("The chatbot one is " + chatbotOne)
+    console.log("The chatbot two is " + chatbotTwo)
+  }
+
+  localStorage.saveToLocalStorage("counter", counter)
+
+  if (chatbotOne === null && chatbotTwo === null) {
+    localStorage.saveToLocalStorage("chatbotOne", chatbot.name)
+  } else if (chatbotOne !== null && chatbotTwo === null) {
+    localStorage.saveToLocalStorage("chatbotTwo", chatbot.name)
+  } else if (chatbotOne === null && chatbotTwo !== null) {
+    localStorage.saveToLocalStorage("chatbotOne", chatbot.name)
+  }
+
+  if (counter === 1) {
+    req.flash("success", `Successfully added <strong>${chatbot.name}</strong>. Please add another one`)
+  } else {
+    req.flash("success", `Successfully added <strong>${chatbot.name}</strong>. <a href="compare">Click here to compare</a>`)
+  }
   res.redirect(`/`)
 }

@@ -1,11 +1,18 @@
 // helper to save and get stuff from local storage
+var localStorage = require('localStorage')
 
 exports.saveToLocalStorage = (key, value) => {
-  var localStorage = require('localStorage')
   localStorage.setItem(key, JSON.stringify(value))
 }
 
 exports.getFromLocalStorage = (key) => {
-  var localStorage = require('localStorage')
   return JSON.parse(localStorage.getItem(key))
+}
+
+exports.removeItem = (key) => {
+  localStorage.removeItem(key)
+}
+
+exports.clearStorage = () => {
+  localStorage.clear()
 }
