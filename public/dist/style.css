@@ -1415,6 +1415,9 @@ pre.error {
 .news-img {
   height: 240px; }
 
+.blog-post:hover {
+  animation: pulse 1s; }
+
 footer {
   background: #303030;
   color: white;

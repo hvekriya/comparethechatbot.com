@@ -1,9 +1,12 @@
 extends layout
 
+include mixins/_about
+
 block content
+  +aboutUs()
   .container
     div#accordion.panel-group
-    h1 General questions
+    h1 Frequently Asked Questions
     .panel.panel-default
       .panel-heading
         h4.panel-title

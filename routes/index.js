@@ -61,8 +61,8 @@ router.post('/reviews/:id',
   catchErrors(reviewController.addReview)
 )
 router.get('/top', chatbotController.getTopChatbots)
-router.get('/faq', (req, res) => {
-  return res.render('faq', {title: 'FAQ'})
+router.get('/about', (req, res) => {
+  return res.render('about', {title: 'About'})
 })
 
 // news page

@@ -22,7 +22,7 @@ exports.menu = [
   { slug: '/tags', title: 'Tags' },
   { slug: '/top', title: 'Top' },
   { slug: '/news', title: 'News' },
-  { slug: '/faq', title: 'FAQ' },
+  { slug: '/about', title: 'About' },
   { slug: '/compare', title: 'Compare' },
   { slug: '/add', title: 'Add' }
 ]
