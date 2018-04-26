@@ -225,35 +225,64 @@ exports.addToComparision = async (req, res) => {
 
   const chatbotOne = localStorage.getFromLocalStorage("chatbotOne")
   const chatbotTwo = localStorage.getFromLocalStorage("chatbotTwo")
-  
-  var counter = +1
+  var counter = 0
 
+  // get the number from the storage if it exist
   if (localStorage.getFromLocalStorage("counter")) {
     counter = counter + parseInt(localStorage.getFromLocalStorage("counter"))
   }
 
+  if (chatbot.name === chatbotOne || chatbot.name === chatbotTwo) {
+    counter = -1
+  } else {
+    counter = +1
+  }
+
+  console.log(counter)
+
   if (counter > 2) {
     localStorage.clearStorage()
-    counter = 0
-    console.log("The counter is " + counter)
-    console.log("The chatbot one is " + chatbotOne)
-    console.log("The chatbot two is " + chatbotTwo)
-  }
-
-  localStorage.saveToLocalStorage("counter", counter)
-
-  if (chatbotOne === null && chatbotTwo === null) {
-    localStorage.saveToLocalStorage("chatbotOne", chatbot.name)
-  } else if (chatbotOne !== null && chatbotTwo === null) {
-    localStorage.saveToLocalStorage("chatbotTwo", chatbot.name)
-  } else if (chatbotOne === null && chatbotTwo !== null) {
-    localStorage.saveToLocalStorage("chatbotOne", chatbot.name)
-  }
-
-  if (counter === 1) {
-    req.flash("success", `Successfully added <strong>${chatbot.name}</strong>. Please add another one`)
+    // console.log("The counter is " + counter)
+    // console.log("The chatbot one is " + chatbotOne)
+    // console.log("The chatbot two is " + chatbotTwo)
   } else {
-    req.flash("success", `Successfully added <strong>${chatbot.name}</strong>. <a href="compare">Click here to compare</a>`)
+    localStorage.saveToLocalStorage("counter", counter)
   }
-  res.redirect(`/`)
+
+  // lets validate and check to make sure the chatbot isnt already added
+  if (chatbot.name === chatbotOne || chatbot.name === chatbotTwo) {
+    req.flash(
+      "error",
+      `The chatbot <strong>${
+        chatbot.name
+      }</strong> has been added already. Please add another one.`
+    )
+    res.redirect(`/`)
+  } else {
+    // add it to the comparison section
+    if (chatbotOne === null && chatbotTwo === null) {
+      localStorage.saveToLocalStorage("chatbotOne", chatbot.name)
+    } else if (chatbotOne !== null && chatbotTwo === null) {
+      localStorage.saveToLocalStorage("chatbotTwo", chatbot.name)
+    } else if (chatbotOne === null && chatbotTwo !== null) {
+      localStorage.saveToLocalStorage("chatbotOne", chatbot.name)
+    }
+
+    if (counter === 1) {
+      req.flash(
+        "success",
+        `Successfully added <strong>${
+          chatbot.name
+        }</strong>. Please add another one`
+      )
+    } else {
+      req.flash(
+        "success",
+        `Successfully added <strong>${
+          chatbot.name
+        }</strong>. <a href="compare">Click here to compare</a>`
+      )
+    }
+    res.redirect(`/`)
+  }
 }

@@ -18,7 +18,7 @@ mixin chatbotCard(chatbot = {})
             a(href=`/chatbot/${chatbot.slug}#review-list`)
               != h.icon('review')
             span= chatbot.reviews.length
-      img(src=`${chatbot.photo || 'bot.png'}`)
+      img(src=`${chatbot.photo || 'bot.png'}` alt=chatbot.name)
       h2.title
         a(href=`/chatbot/${chatbot.slug}`) #{chatbot.name}
     .chatbot__details
