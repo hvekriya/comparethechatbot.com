@@ -6,4 +6,6 @@ Used Medium/Chabotmagazine api to load news
 Creating and updating chabots
 Registering to add chatbots
 
+Documentation/User manual coming soon!
+
 
